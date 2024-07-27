@@ -5,7 +5,7 @@ schedule:
 - cron: '0 * * * *'
 
 jobs:
-	merge-to-main:
+	test-merge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
