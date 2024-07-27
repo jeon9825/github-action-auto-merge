@@ -1,8 +1,9 @@
 name: Merge to Main
 
 on:
-  schedule:
-    - cron: '*/5 * * * *' 
+  push:
+    branches:
+      - dev
 
 jobs:
   merge-to-main:
