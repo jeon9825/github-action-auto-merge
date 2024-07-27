@@ -21,7 +21,7 @@ jobs:
           git config pull.rebase false
 
       - name: Fetch all branches
-        run: git fetch --all
+        run: git fetch --all --unshallow
 
       - name: Merge dev into main
         run: |
