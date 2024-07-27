@@ -4,7 +4,7 @@ inputs:
   status:
     required: false
     default: 'failure'
-  slack_incoming_url:
+  slack_webhook_url:
     required: true
 
 runs:
@@ -22,4 +22,4 @@ runs:
 
         MSG="{ \"text\":\">${EMOTICON} workflow (<https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}|${GITHUB_WORKFLOW}>) in <https://github.com/${GITHUB_REPOSITORY}|${GITHUB_REPOSITORY}>\n><https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}/checks|${GITHUB_JOB}> job ${{ inputs.status }}, branch=\`${GITHUB_REF#refs/heads/}\`\", \"icon_emoji\": \":ghost:\"}"
 
-        curl -X POST -H 'Content-type: application/json' --data "${MSG}" "${{ inputs.SLACK_WEBHOOK_URL }}"
+        curl -X POST -H 'Content-type: application/json' --data "${MSG}" "${{ inputs.slack_webhook_url }}"
