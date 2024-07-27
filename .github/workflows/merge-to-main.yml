@@ -14,9 +14,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Merge to Main
+      - name: Set up Git config
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Merge dev into main
         run: |
           git checkout main
+          git pull origin main
           git merge dev --no-ff --no-edit || (echo "Merge conflict detected" && exit 1)
           git push origin main
 
@@ -25,7 +34,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const issue = await github.issues.create({
+            const { context, github } = require('@actions/github');
+            const issue = await github.rest.issues.create({
               ...context.repo,
               title: 'Merge Conflict Detected',
               body: 'A merge conflict occurred during the automated merge process. Please resolve it manually.',
