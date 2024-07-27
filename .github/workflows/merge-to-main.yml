@@ -26,7 +26,7 @@ jobs:
         run: |
           git checkout main
           git pull origin main
-          git merge dev --no-ff --no-edit || (echo "Merge conflict detected" && exit 1)
+          git merge origin/dev --no-ff --no-edit || (echo "Merge conflict detected" && exit 1)
           git push origin main
 
       - name: Handle merge conflict
@@ -42,3 +42,14 @@ jobs:
               labels: ['conflict']
             });
             console.log(`Created issue with ID: ${issue.data.number}`);
+            
+            const { data: pullRequest } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Merge dev into main',
+              head: 'dev',
+              base: 'main',
+              body: 'This pull request merges changes from dev into main.',
+              draft: false
+            });
+            console.log(`Created pull request with ID: ${pullRequest.number}`);
