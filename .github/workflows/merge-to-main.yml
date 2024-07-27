@@ -34,9 +34,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { context, github } = require('@actions/github');
             const issue = await github.rest.issues.create({
-              ...context.repo,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               title: 'Merge Conflict Detected',
               body: 'A merge conflict occurred during the automated merge process. Please resolve it manually.',
               labels: ['conflict']
