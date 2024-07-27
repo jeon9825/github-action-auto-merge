@@ -3,7 +3,7 @@ name: Merge to Main
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '20 * * * *'
 
 jobs:
   merge-to-main:
