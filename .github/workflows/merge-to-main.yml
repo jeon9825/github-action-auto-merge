@@ -19,14 +19,14 @@ jobs:
           git push origin main
 
       - name: Handle merge conflict
-		    if: failure()
-		    uses: actions/github-script@v6
-		    with:
-		      script: |
-		        const issue = await github.issues.create({
-		          ...context.repo,
-		          title: 'Merge Conflict Detected',
-		          body: 'A merge conflict occurred during the automated merge process. Please resolve it manually.',
-		          labels: ['conflict']
-		        });
-		        console.log(`Created issue with ID: ${issue.data.number}`);
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = await github.issues.create({
+              ...context.repo,
+              title: 'Merge Conflict Detected',
+              body: 'A merge conflict occurred during the automated merge process. Please resolve it manually.',
+              labels: ['conflict']
+            });
+            console.log(`Created issue with ID: ${issue.data.number}`);
