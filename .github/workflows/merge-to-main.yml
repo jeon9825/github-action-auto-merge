@@ -26,7 +26,7 @@ jobs:
         run: |
           git checkout main
           git pull origin main
-          git merge origin/dev --allow-unrelated-histories --no-ff --no-edit || (echo "Merge conflict detected" && exit 1)
+          git pull origin/dev --allow-unrelated-histories --no-ff --no-edit || (echo "Merge conflict detected" && exit 1)
           git push origin main
 
       - name: Handle merge conflict
