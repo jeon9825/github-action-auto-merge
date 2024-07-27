@@ -2,7 +2,7 @@ name: Merge to Main
 
 on:
   schedule:
-    - cron: '*/5 * * * *' 
+    - cron: '40 * * * *' 
 
 jobs:
   merge-to-main:
