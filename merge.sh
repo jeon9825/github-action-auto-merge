@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Git 설정
-git config user.name "cleaninglab-yunee"
+git config user.name "yunee"
 git config user.email "yunee@cleaninglab.co.kr"
 
 # 모든 브랜치 가져오기
