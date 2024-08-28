@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Git 설정
-git config user.name "yunee"
-git config user.email "yunee@cleaninglab.co.kr"
+git config user.name "jeon9825"
+git config user.email "jy201735031@gmail.com"
 
 # 모든 브랜치 가져오기
 git fetch --all --unshallow
